@@ -76,15 +76,65 @@ def gradient_descent(x, y, w_init, b_init, learning_rate, cost_function, gradien
     return w, b, w_hist, b_hist, c_hist
 
 
-# 預設w, b, 迭代次數, 學習率
 
 w = np.array([1, 2, 3, 4])
 b = 0
 run_iter = 10000
 learning_rate = 0.003
 
-# 梯度下降後cost最低的w, b, 以及迭代過程中變化的紀錄
 w_final, b_final, w_hist, b_hist, c_hist = gradient_descent(x_train, y_train, w, b, learning_rate, compute_cost, compute_gradient, run_iter)
-
-# 用cost最低的w, b 來預測測試資料
 y_pred = (w_final * x_test).sum(axis=1) + b_final
+
+
+
+
+
+
+
+# #test & error
+# error = abs(y_test - y_pred)
+
+# output = pd.DataFrame({'y_pred' : y_pred, 'y_test' : y_test, 'error' : error})
+# print(output)
+
+
+
+
+
+
+# plt.plot(range(len(y_pred))[::10], y_test[::10], label='Y_test')
+# plt.plot(range(len(y_pred))[::10], y_pred[::10], label='Y_pred')
+# plt.plot(range(len(y_pred))[::10], error[::10], label='error')
+# plt.title('y_test vs y_pred  & error')
+# plt.xlabel('number of objects')
+# plt.ylabel('workhours')
+# plt.legend()
+# plt.show()
+
+
+#w, b by cost
+# fig = plt.figure()  # 創建一個新的圖表
+# ax = fig.add_subplot(111, projection='3d')  # 創建一個3D坐標系
+
+# w0 , w1, w2, w3 = [], [], [], []
+# for i in range(len(w_hist)):
+#     w0.append(w_hist[i][0])
+#     w1.append(w_hist[i][1])
+#     w2.append(w_hist[i][2])
+#     w3.append(w_hist[i][3])
+# ax.scatter(w0, range(run_iter), c_hist, marker='o', label='age')  # 繪製3D散點圖
+# ax.scatter(w1, range(run_iter), c_hist, marker='o', label='sex')  # 繪製3D散點圖
+# ax.scatter(w2, range(run_iter), c_hist, marker='o', label='drink')  # 繪製3D散點圖
+# ax.scatter(w3, range(run_iter), c_hist, marker='o', label='education')  # 繪製3D散點圖
+# ax.scatter(b_hist, range(run_iter), c_hist,  marker='o', label='b')  # 繪製3D散點圖
+
+
+# ax.set_xlabel('w&b')  # 設置X軸標籤
+# ax.set_ylabel('run_iter')  # 設置Y軸標籤
+# ax.set_zlabel('cost')  # 設置Z軸標籤
+
+# plt.title('W&B vs Cost')  # 設置圖表標題
+# plt.legend()  # 顯示圖例
+# plt.show()  # 顯示圖表
+
+
